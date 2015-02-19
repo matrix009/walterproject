@@ -19,50 +19,57 @@ class UserContr extends BaseContr
         {
             $this->logout($vd);
         }
+        
+        if (!$this->loggedIn()) 
+        {
 
-        $user = GuestDatabase::instance()->cercaUtentePerId(
-        $_SESSION[BaseContr::user], $_SESSION[BaseContr::role]);
-        //Aggiunge il prodotto al carrello dell'utente e lo manda alla sottopagina 'carrello'    
-        if(isset($request["carrello"]))
+        } 
+        else
         {
-            $user = GuestDatabase::instance()->cercaUtentePerId($_SESSION[self::user], $_SESSION[self::role]);  
-            ViewProdDatabase::instance()->saveUserAndProduct($user->getId(), $request["carrello"]); 
-            $vd->setSottoPagina("carrello");
-        }
+            $user = GuestDatabase::instance()->cercaUtentePerId(
+            $_SESSION[BaseContr::user], $_SESSION[BaseContr::role]);
             
-        // Funzione che elimina il prodotto scelto nel carrello
-        if(isset($request["elimina_prodotto"]))
-        { 
-            ViewProdDatabase::instance()->cancellaProdottoDaCarrello($request["elimina_prodotto"]); 
-            $vd->setSottoPagina("carrello");
-        }
-        //Gestione sottopagine per il caricamento dinamico    
-        if(isset($request["sottopagina"]))
-        {
-            switch($request["sottopagina"])
+            if(isset($request["carrello"]))
             {
-                case carrello:
-                    $vd->setSottoPagina('carrello');
-                    break;
-                    
-                case informazioni:
-                    $vd->setSottoPagina('informazioni');
-                    break;
-                    
-                case transazione:
-                    $vd->setSottoPagina('transazione');
-                    break;
-                    
-                case modifica:
-                    $vd->setSottoPagina('modifica');
-                    break;
-                    
-                case aggiungi_prodotto:
-                    $vd->setSottoPagina('aggiungi_prodotto');
-                    break;
+                $user = GuestDatabase::instance()->cercaUtentePerId($_SESSION[self::user], $_SESSION[self::role]);  
+                ViewProdDatabase::instance()->saveUserAndProduct($user->getId(), $request["carrello"]); 
+                $vd->setSottoPagina("carrello");
             }
+            
+            // Funzione che elimina il prodotto scelto nel carrello
+            if(isset($request["elimina_prodotto"]))
+            { 
+                ViewProdDatabase::instance()->cancellaProdottoDaCarrello($request["elimina_prodotto"]); 
+                $vd->setSottoPagina("carrello");
+            }
+            
+            if(isset($request["sottopagina"]))
+            {
+                switch($request["sottopagina"])
+                {
+                    case carrello:
+                        $vd->setSottoPagina('carrello');
+                        break;
+                    
+                    case informazioni:
+                        $vd->setSottoPagina('informazioni');
+                        break;
+                    
+                    case transazione:
+                        $vd->setSottoPagina('transazione');
+                        break;
+                    
+                    case modifica:
+                        $vd->setSottoPagina('modifica');
+                        break;
+                    
+                    case aggiungi_prodotto:
+                        $vd->setSottoPagina('aggiungi_prodotto');
+                        break;
+                }
+            }    
+            $this->showHomeUtente($vd);
         }
-        $this->showHomeUtente($vd);
     }
 }
 ?>
