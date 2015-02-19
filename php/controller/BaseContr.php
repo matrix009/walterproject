@@ -33,6 +33,7 @@ class BaseContr
                     if ($this->loggedIn())
                         $user = GuestDatabase::instance()->cercaUtentePerId($_SESSION[self::user], $_SESSION[self::role]);
                     break;
+                    
                 default : $this->showLoginPage();
             }
         } 
