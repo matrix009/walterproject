@@ -53,8 +53,9 @@ class BaseContr
                             break;
                     }
                 }
-                $this->showLoginPage($vd);
+                
             }
+            $this->showLoginPage($vd);
         }
     }
     
