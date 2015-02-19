@@ -1,6 +1,8 @@
 body
 {
 	background-image: url('../img/sfondo_index.png');
+	height: 150px;
+        width: 1250px;
 	background-repeat: no-repeat;
         background-attachment: fixed;
         font: 13px/20px "Open Sans", Arial, sans-serif;
