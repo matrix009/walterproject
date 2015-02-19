@@ -11,7 +11,7 @@
     class ControllerPrincipale 
     {
         public static function dispatch(&$request) 
-        {
+        {            
             session_start(); 
             
             if(isset($request["carrello"]))
@@ -44,7 +44,7 @@
                 $cont->listenInput($request);
             }
             
-            if (($request["logout"]) === "Logout") 
+            if (isset($request["logout"])) 
             {
                 $controller = new UserContr();
                 if (isset($_SESSION[BaseContr::role]) &&$_SESSION[BaseContr::role] != User::User) 
