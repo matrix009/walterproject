@@ -9,7 +9,7 @@
         public static function connettiDatabase()
         {
             $mysqli = new mysqli();
-            $mysqli->connect("http://spano.sc.unica.it/", "crobuWalter", "gabbiano20", "amm14_crobuWalter");
+            $mysqli->connect("localhost", "crobuWalter", "gabbiano20", "amm14_crobuWalter");
             return $mysqli;
         }
     }
