@@ -21,4 +21,4 @@
 <p id="text_benvenuti">
     <b>Benvenuto Utente!</b> Questa è la pagina principale dove potrete visitare il nostro database e aggiungere i prodotti per procedere all'acquisto.
 </p>
-<img src="../../img/info.png">
+<img src="../img/info.png">
