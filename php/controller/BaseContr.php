@@ -19,7 +19,7 @@ class BaseContr
     public function listenInput(&$request) 
     {
         $vd = new ViewDescriptor();
-        $vd->setPagina($request['page']);
+        $vd->setPagina(isset($request['page']));
         $this->setImpToken($vd, $request);
 
         if (isset($request["cmd"])) 
