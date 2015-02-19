@@ -47,23 +47,23 @@ class UserContr extends BaseContr
             {
                 switch($request["sottopagina"])
                 {
-                    case carrello:
+                    case 'carrello':
                         $vd->setSottoPagina('carrello');
                         break;
                     
-                    case informazioni:
+                    case 'informazioni':
                         $vd->setSottoPagina('informazioni');
                         break;
                     
-                    case transazione:
+                    case 'transazione':
                         $vd->setSottoPagina('transazione');
                         break;
                     
-                    case modifica:
+                    case 'modifica':
                         $vd->setSottoPagina('modifica');
                         break;
                     
-                    case aggiungi_prodotto:
+                    case 'aggiungi_prodotto':
                         $vd->setSottoPagina('aggiungi_prodotto');
                         break;
                 }
