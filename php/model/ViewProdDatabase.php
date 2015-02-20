@@ -213,7 +213,7 @@ class ViewProdDatabase
         $precomp->close();  
     }
     //Funzione che permette di modificare l'intero prodotto del database
-    public function aggiungiProdottoAlDatabase($id_prodotto)
+    public function aggiungiProdottoAlDatabase($tipo, $marca, $nome, $descrizione, $quantita, $prezzo)
     {
         $mysqli = Database::connettiDatabase();
         if (!isset($mysqli))
@@ -223,8 +223,8 @@ class ViewProdDatabase
             return null;
         }
 
-        $query = "";
-        
+        $query = "INSERT INTO prodotto (tipo, marca, nome, descrizione, quantita, prezzo) VALUES (?, ?, ?, ?, ?, ?);";
+
         $precomp = $mysqli->stmt_init();
         $precomp->prepare($query);
         if (!$precomp) 
@@ -234,13 +234,14 @@ class ViewProdDatabase
             return null;
         }
 
-        if (!$precomp->bind_param('i', $id_prodotto)) 
+        if (!$precomp->bind_param('ssssid', $tipo, $marca, $nome, $descrizione, $quantita, $prezzo)) 
         {
             error_log("[aggiungiProdottoAlDatabase] impossibile effettuare il binding in input");
             $mysqli->close();
+
             return null;
         }
-        
+
         $precomp->execute();
         $precomp->close();  
     }

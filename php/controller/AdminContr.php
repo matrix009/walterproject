@@ -48,10 +48,15 @@ class AdminContr extends BaseContr
         //Questa funzione serve per modificare il prodotto dal database    
         if(isset($request["aggiungi_prod_database"]))
         { 
-            ViewProdDatabase::instance()->aggiungiProdottoAlDatabase($request["aggiungi_prod_database"]); 
+            ViewProdDatabase::instance()->aggiungiProdottoAlDatabase($request["tipo"],
+                                                                     $request["marca"],
+                                                                     $request["nome"],
+                                                                     $request["descrizione"],
+                                                                     $request["quantita"],
+                                                                     $request["prezzo"]);
             $vd->setSottoPagina("home");
         }
-	$this->showHomeUtente($vd); 
+        $this->showHomeUtente($vd);
     }
 }
 ?>

@@ -335,4 +335,14 @@ body
 {
     color: #3151A2;
 }
+
+#tabella_aggiunta_prodotto
+{
+    border: solid 1px #ddd;
+    background-color: #efeeee;
+    width: 30%;
+    
+    padding: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,.2);
+}
 /* Altro */
