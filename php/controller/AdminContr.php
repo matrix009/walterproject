@@ -25,9 +25,6 @@ class AdminContr extends BaseContr
         {
             $this->logout($vd);
         }
-
-        $user = GuestDatabase::instance()->cercaUtentePerId(
-        $_SESSION[BaseContr::user], $_SESSION[BaseContr::role]);
         
         //Funzione carrello, aggiunge il prodotto e carica la pagina carrello
         if(isset($request["carrello"]))

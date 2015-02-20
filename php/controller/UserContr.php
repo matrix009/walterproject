@@ -14,7 +14,7 @@ class UserContr extends BaseContr
     public function listenInput(&$request) 
     {
         $vd = new ViewDescriptor();
-        
+   
         if(isset($request["logout"]))
         {
             $this->logout($vd);
@@ -26,9 +26,6 @@ class UserContr extends BaseContr
         } 
         else
         {
-            $user = GuestDatabase::instance()->cercaUtentePerId(
-            $_SESSION[BaseContr::user], $_SESSION[BaseContr::role]);
-            
             if(isset($request["carrello"]))
             {
                 $user = GuestDatabase::instance()->cercaUtentePerId($_SESSION[self::user], $_SESSION[self::role]);  
@@ -44,7 +41,7 @@ class UserContr extends BaseContr
             }
             
             if(isset($request["sottopagina"]))
-            {
+            {                
                 switch($request["sottopagina"])
                 {
                     case 'carrello':

@@ -13,7 +13,7 @@
                         <h1>Log In</h1>
                         <fieldset id="inputs">
                             <label for="user">Username</label>
-                            <input id="username" type="text" name="user" id="user"/>
+                            <input type="text" name="user" id="user"/>
                             <label for="password">Password</label>
                             <input type="password" name="password" id="password"/> 
                         </fieldset>

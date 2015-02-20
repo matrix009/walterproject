@@ -9,12 +9,12 @@
         
     <b>Come richiesto dal progetto, sono state implementate le seguenti funzionalità:</b></i><br>
     <ul type="disc">
-        <li><b>Html & CSS</b></li>
-        <li><b>PHP & MySQL</b></li>
-        <li><b>Utilizzo MVC</b></li>
-        <li><b>Due Ruoli:</b> <i>matrix009 - user | admin - admin</i></li>
-        <li><b>Transazione</b></li>
-        <li><b>Funzionalità Ajax</b></li>
+        <li><b>Html & CSS ✔</b></li>
+        <li><b>PHP & MySQL ✔</b></li>
+        <li><b>Utilizzo MVC ✔</b></li>
+        <li><b>Due Ruoli:</b> <i>matrix009 - user | admin - admin</i> <b>✔</b></li>
+        <li><b>Transazione ✔</b></li>
+        <li><b>Funzionalità Ajax ✔</b></li>
     </ul>
     
     <i>Il sito è basato e incentrato nell'acquisto online di prodotti riguardanti il mondo dei computer.

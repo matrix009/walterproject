@@ -30,7 +30,7 @@
                     <table style="text-align: left; width: 100%;" cellpadding="5" cellspacing="1">
 
                         <tr title="Prodotto">
-                            <td id="tabella_1"><b>Marca:</b> <input type="text" value="Scrivi la marca" size="22" maxlenght="50"></td>
+                            <td id="tabella_1"><b>Marca:</b> <input type="text" value="Scrivi la marca" size="22" maxlenght="50" name=""></td>
                             <td id="tabella_2" colspan="1" rowspan="3"><b>Descrizione:</b> <textarea name="testo" rows="5" cols="45">Scrivi la descrizione</textarea></td>
                         </tr>
 
