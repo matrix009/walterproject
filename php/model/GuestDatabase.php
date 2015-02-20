@@ -151,7 +151,6 @@ class GuestDatabase
         $user->setId($row['user.id_utente']);
         $user->setNome($row['user.nome']);
         $user->setCognome($row['user.cognome']);
-        $user->setMail($row['user.mail']);
         $user->setRuolo(User::User);
         $user->setUserName($row['user.username']);
         $user->setPassword($row['user.password']);
@@ -165,7 +164,6 @@ class GuestDatabase
         $admin->setId($row['user.id_utente']);
         $admin->setNome($row['user.nome']);
         $admin->setCognome($row['user.cognome']);
-        $admin->setMail($row['user.mail']);
         $admin->setRuolo(User::Admin);
         $admin->setUserName($row['user.username']);
         $admin->setPassword($row['user.password']);
@@ -206,7 +204,7 @@ class GuestDatabase
         }
         $row = array();
         $bind = $stmt->bind_result(
-                $row['user.id_utente'], $row['user.nome'], $row['user.cognome'], $row['user.username'], $row['user.password'], $row['user.role'], $row['user.indirizzo'], $row['user.mail']);
+                $row['user.id_utente'], $row['user.nome'], $row['user.cognome'], $row['user.username'], $row['user.password'], $row['user.role']);
         if (!$bind) 
         {
             error_log("[caricaGuestDaStmt] impossibile" .
@@ -232,7 +230,7 @@ class GuestDatabase
         $row = array();
         $bind = $stmt->bind_result
         (
-                $row['user.id_utente'], $row['user.nome'], $row['user.cognome'], $row['user.username'], $row['user.password'], $row['user.role'], $row['user.indirizzo'], $row['user.mail']);
+                $row['user.id_utente'], $row['user.nome'], $row['user.cognome'], $row['user.username'], $row['user.password'], $row['user.role']);
         if (!$bind) 
         {
             error_log("[caricaAdminDaStmt] impossibile" .

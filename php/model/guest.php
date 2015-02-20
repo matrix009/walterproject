@@ -9,9 +9,7 @@ class User
     private $password;
     private $nome;
     private $cognome;
-    private $mail;
     private $ruolo;
-    private $indirizzo;
     private $id;
 
     public function __construct()        
@@ -84,31 +82,6 @@ class User
     {
         return $this->ruolo;
     }
-   
-
-    public function getMail() 
-    {
-        return $this->mail;
-    }
-    public function setMail($mail) {
-        if (!filter_var($mail, FILTER_VALIDATE_EMAIL)) 
-        {
-            return false;
-        }
-        $this->email = $mail;
-        return true;
-    }
-
-    public function getIndirizzo() 
-    {
-        return $this->indirizzo;
-    }
-    public function setIndirizzo($indirizzo) 
-    {
-        $this->indirizzo = $indirizzo;
-        return true;
-    }
-
     
     public function getId()
     {
