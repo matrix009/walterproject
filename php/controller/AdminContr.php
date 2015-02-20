@@ -50,7 +50,8 @@ class AdminContr extends BaseContr
         { 
             ViewProdDatabase::instance()->aggiungiProdottoAlDatabase($request["aggiungi_prod_database"]); 
             $vd->setSottoPagina("home");
-        }  
+        }
+	$this->showHomeUtente($vd); 
     }
 }
 ?>
