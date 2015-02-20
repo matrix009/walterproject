@@ -49,7 +49,7 @@ class BaseContr
                 {
                     switch($request["sottopagina"])
                     {
-                        case informazioni:
+                        case 'informazioni':
                             $vd->setSottoPagina('informazioni');
                             break;
                     }
