@@ -17,6 +17,7 @@ include_once basename(__DIR__) . '/../model/GuestDatabase.php';
 include_once basename(__DIR__) . '/../model/ViewProdDatabase.php';
 
 $cont = 0;
+$prod = 1;
 
 $user = GuestDatabase::instance()->cercaUtentePerId($_SESSION[self::user], $_SESSION[self::role]);
 
@@ -28,7 +29,7 @@ $result = ViewProdDatabase::instance()->loadCart($user->getId());
                 <table id="tabella_carrello2" align="center" style="text-align: left; width: 100%;" cellpadding="0" cellspacing="0"><tr><td class="mleft_top"></td><td><table class="mback" width="100%" cellpadding="0" cellspacing="0"><tr><td class="mback_left"></td><td class="mback_center">
                     </td><td class="mback_right"></td></tr></table></td><td class="mright_top"></td></tr><tr><td class="mleft"></td><td><table class="mainbg" style="text-align:center;width:100%" cellpadding="4" cellspacing="1">
 
-                    <tr title="Porodotto">
+                    <tr title="Prodotto">
                         <td id="carrello_1"><?= $row->getTipo() ?><br><?= $row->getNome() ?></td>
                         <td id="carrello_2"><?= $row->getDescrizione() ?></td>
                         <td id="carrello_3"><?= $row->getPrezzo() ?> €</td>
@@ -67,4 +68,3 @@ $result = ViewProdDatabase::instance()->loadCart($user->getId());
            Pagamenti sicuri tramite Paypal.</i>
     </font>
 </center>
-<br><br><br><br><br><br><br>

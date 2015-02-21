@@ -34,10 +34,8 @@
             
             if(isset($request["svuota_carrello"]))
             {
-                echo 'ciao5<br>';
                 $cont = new UserContr();
                 $cont->listenInput($request);
-                echo 'ciao6<br>';
             }
 
             if(isset($request["elimina_prod_database"]))

@@ -16,7 +16,6 @@ class UserContr extends BaseContr
         $vd = new ViewDescriptor();
         $vd->setPagina(isset($request['page']));
         $this->setImpToken($vd, $request);
-        echo 'ciao7<br>';
    
         if(isset($request["logout"]))
         {
@@ -46,13 +45,9 @@ class UserContr extends BaseContr
             // Funzione che elimina il prodotto scelto nel carrello
             if(isset($request["svuota_carrello"]))
             { 
-                echo 'ciao1<br>';
                 $user = GuestDatabase::instance()->cercaUtentePerId($_SESSION[self::user], $_SESSION[self::role]);  
-                echo $request["svuota_carrello"];
                 ViewProdDatabase::instance()->transazioneCarrello($request["svuota_carrello"]); 
-                echo 'ciao2<br>';
                 $vd->setSottoPagina("transazione");
-                echo 'ciao3<br>';
             }
             
             if(isset($request["sottopagina"]))

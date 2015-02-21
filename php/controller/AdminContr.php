@@ -19,6 +19,8 @@ class AdminContr extends BaseContr
     public function listenInput(&$request) 
     {
         $vd = new ViewDescriptor();
+        $vd->setPagina(isset($request['page']));
+        $this->setImpToken($vd, $request);
         
         //Funzione logout
         if(isset($request["logout"]))
@@ -26,19 +28,6 @@ class AdminContr extends BaseContr
             $this->logout($vd);
         }
         
-        //Funzione carrello, aggiunge il prodotto e carica la pagina carrello
-        if(isset($request["carrello"]))
-        {
-            $user = GuestDatabase::instance()->cercaUtentePerId($_SESSION[self::user], $_SESSION[self::role]);  
-            ViewProdDatabase::instance()->saveUserAndProduct($user->getId(), $request["carrello"]); 
-            $vd->setSottoPagina("carrello");
-        }
-        //Elimina il prodotto dal carrello e resta nella sottopagina carrello    
-        if(isset($request["elimina_prodotto"]))
-        { 
-            ViewProdDatabase::instance()->cancellaProdottoDaCarrello($request["elimina_prodotto"]); 
-            $vd->setSottoPagina("carrello");
-        }
         //Questa funzione serve per eliminare il prodotto dal database    
         if(isset($request["elimina_prod_database"]))
         { 

@@ -223,7 +223,7 @@ class ViewProdDatabase
             return null;
         }
 
-        $query = "INSERT INTO prodotto (tipo, marca, nome, descrizione, quantita, prezzo) VALUES (?, ?, ?, ?, ?, ?);";
+        $query = "INSERT INTO prodotto (tipo, marca, nome, descrizione, quantita, prezzo) VALUES (?, ?, ?, ?, ?, ?)";
 
         $precomp = $mysqli->stmt_init();
         $precomp->prepare($query);
@@ -235,6 +235,44 @@ class ViewProdDatabase
         }
 
         if (!$precomp->bind_param('ssssid', $tipo, $marca, $nome, $descrizione, $quantita, $prezzo)) 
+        {
+            error_log("[aggiungiProdottoAlDatabase] impossibile effettuare il binding in input");
+            $mysqli->close();
+
+            return null;
+        }
+
+        $precomp->execute();
+        $precomp->close();  
+    }
+    
+    public function transazioneCarrello($id_utente)
+    {
+        $mysqli = Database::connettiDatabase();
+ 
+        if (!isset($mysqli))
+        {
+            error_log("[aggiungiProdottoAlDatabase] impossibile inizializzare il database");
+            $mysqli->close();
+            return null;
+        }
+        
+        START_TRANSACTION;
+        
+        $query = "DELETE FROM carrello WHERE carrello.id_utente = ?";
+        
+        COMMIT;
+        
+        $precomp = $mysqli->stmt_init();
+        $precomp->prepare($query);
+        if (!$precomp) 
+        {
+            error_log("[aggiungiProdottoAlDatabase] impossibile inizializzare il prepared statement");
+            $mysqli->close();
+            return null;
+        }
+
+        if (!$precomp->bind_param('i', $id_utente)) 
         {
             error_log("[aggiungiProdottoAlDatabase] impossibile effettuare il binding in input");
             $mysqli->close();

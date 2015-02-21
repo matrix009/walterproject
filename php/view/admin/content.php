@@ -9,10 +9,6 @@
             include 'informazioni.php';
             break;
         
-        case 'modifica':
-            include 'modifica.php';
-            break;
-        
         case 'aggiungi_prodotto':
             include 'aggiungi_prodotto.php';
             break;
@@ -45,7 +41,7 @@
                                 <b><?= $row->tipo ?></b>                             
                             </td>
                             <td align="right" style="padding-right: 10px;">
-                                <form action="index.php" method="post"><button id="bottone_cancella_modifica" type="submit" name="sottopagina" value="modifica"><b>Modifica</b></button> |<button id="bottone_cancella_modifica" type="submit" name="elimina_prod_database" value="<?= $row->id_prodotto ?>"><b>Cancella</b></button></form>                            
+                                <form action="index.php" method="post"><button id="bottone_cancella_modifica" type="submit" name="elimina_prod_database" value="<?= $row->id_prodotto ?>"><b>Cancella</b></button></form>                            
                             </td>
                             <td>
                             </td>

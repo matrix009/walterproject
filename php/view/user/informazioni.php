@@ -5,7 +5,7 @@
     dove l'utente potrà vedere i prodotti disponibili all'interno del database, scegliere quello adatto per lui per poi acquistarlo.<br><br>
         
     L'account secondario è di tipo <b>Admin</b>, l'utente potrà visualizzare normalmente il database e procedere all'acquisto nel caso lo voglia. In più
-    ha la possibilità di <b>modificare/eliminare e aggiungere</b> elementi dal database.<br><br>
+    ha la possibilità di <b>aggiungere/eliminare</b> elementi dal database.<br><br>
         
     <b>Come richiesto dal progetto, sono state implementate le seguenti funzionalità:</b></i><br>
     <ul type="disc">
@@ -21,4 +21,4 @@
        Nel database sono stati inseriti alcuni modelli di: Schede Madri, CPU, RAM, Alimentatori, Case & Hard Disk.
        Divertiti a costruire la tua configurazione. Con facilità aggiungi i prodotti nel carrello e acquistali subito!<br>
        Buona permanenza.</i>
-<br>
+<br><br>
