@@ -257,7 +257,7 @@ class ViewProdDatabase
             return null;
         }
         
-        START_TRANSACTION;
+        START TRANSACTION;
         
         $query = "DELETE FROM carrello WHERE carrello.id_utente = ?";
         
