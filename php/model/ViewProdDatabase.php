@@ -257,11 +257,9 @@ class ViewProdDatabase
             return null;
         }
         
-        START TRANSACTION;
+        mysql_query("START TRANSACTION");
         
         $query = "DELETE FROM carrello WHERE carrello.id_utente = ?";
-        
-        COMMIT;
         
         $precomp = $mysqli->stmt_init();
         $precomp->prepare($query);
@@ -281,6 +279,9 @@ class ViewProdDatabase
         }
 
         $precomp->execute();
+
+	mysql_query("COMMIT");
+	
         $precomp->close();  
     }
 }
