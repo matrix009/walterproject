@@ -31,6 +31,14 @@
                 $cont = new UserContr();
                 $cont->listenInput($request);
             }
+            
+            if(isset($request["svuota_carrello"]))
+            {
+                echo 'ciao5<br>';
+                $cont = new UserContr();
+                $cont->listenInput($request);
+                echo 'ciao6<br>';
+            }
 
             if(isset($request["elimina_prod_database"]))
             {
@@ -43,7 +51,7 @@
                 $cont = new AdminContr();
                 $cont->listenInput($request);
             }
-            
+
             if (isset($request["logout"])) 
             {
                 $controller = new UserContr();

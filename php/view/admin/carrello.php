@@ -28,7 +28,7 @@ $result = ViewProdDatabase::instance()->loadCart($user->getId());
                 <table id="tabella_carrello2" align="center" style="text-align: left; width: 100%;" cellpadding="0" cellspacing="0"><tr><td class="mleft_top"></td><td><table class="mback" width="100%" cellpadding="0" cellspacing="0"><tr><td class="mback_left"></td><td class="mback_center">
                     </td><td class="mback_right"></td></tr></table></td><td class="mright_top"></td></tr><tr><td class="mleft"></td><td><table class="mainbg" style="text-align:center;width:100%" cellpadding="4" cellspacing="1">
 
-                    <tr title="Prodotto">
+                    <tr title="Porodotto">
                         <td id="carrello_1"><?= $row->getTipo() ?><br><?= $row->getNome() ?></td>
                         <td id="carrello_2"><?= $row->getDescrizione() ?></td>
                         <td id="carrello_3"><?= $row->getPrezzo() ?> €</td>
@@ -54,7 +54,7 @@ $result = ViewProdDatabase::instance()->loadCart($user->getId());
         <font size="3px"><b>Spesa Totale:</b></font> <font color="red" size="4px"><b><?= $cont ?> €</b></font><br>
         <i>Manca poco..</i>
         <form action="index.php">    
-            <button id="submit" type="submit" name="sottopagina" value="transazione">Procedi All'cquisto!</button>
+            <button id="submit" type="submit" name="svuota_carrello" value="<?= $user->getId() ?>">Procedi All'cquisto!</button>
         </form>
         <hr>
         <form action="index.php">
@@ -67,3 +67,4 @@ $result = ViewProdDatabase::instance()->loadCart($user->getId());
            Pagamenti sicuri tramite Paypal.</i>
     </font>
 </center>
+<br><br><br><br><br><br><br>

@@ -54,7 +54,7 @@ $result = ViewProdDatabase::instance()->loadCart($user->getId());
         <font size="3px"><b>Spesa Totale:</b></font> <font color="red" size="4px"><b><?= $cont ?> €</b></font><br>
         <i>Manca poco..</i>
         <form action="index.php">    
-            <button id="submit" type="submit" name="sottopagina" value="transazione">Procedi All'cquisto!</button>
+            <button id="submit" type="submit" name="svuota_carrello" value="<?= $user->getId() ?>">Procedi All'cquisto!</button>
         </form>
         <hr>
         <form action="index.php">
@@ -67,4 +67,4 @@ $result = ViewProdDatabase::instance()->loadCart($user->getId());
            Pagamenti sicuri tramite Paypal.</i>
     </font>
 </center>
-<br><br><br><br><br><br>
+<br><br><br><br><br><br><br>
