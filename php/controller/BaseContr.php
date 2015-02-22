@@ -22,6 +22,15 @@ class BaseContr
         $vd = new ViewDescriptor();
         $vd->setPagina(isset($request['page']));
         $this->setImpToken($vd, $request);
+        
+        //Richiesta di logout
+        if (isset($request["logout"])) 
+        {
+            $request["logout"] = '';
+            $request["login"] = null;
+            $this->logout();
+        }
+        
         //Gestione login in base all'utente
         if (isset($request["cmd"])) 
         {
@@ -128,7 +137,7 @@ class BaseContr
         }
     }
     //Funzione di logout che distrugge la sessione e mostra la pagina di login
-    protected function logout($vd)
+    protected function logout() 
     {
         $_SESSION = array();
         if (session_id() != '' || isset($_COOKIE[session_name()])) 
@@ -136,9 +145,6 @@ class BaseContr
             setcookie(session_name(), '', time() - 2592000, '/');
         }
         session_destroy();
-        
-        $this->showLoginPage($vd);
     }
 }
-
 ?>

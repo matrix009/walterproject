@@ -22,12 +22,7 @@ class AdminContr extends BaseContr
         $vd->setPagina(isset($request['page']));
         $this->setImpToken($vd, $request);
 
-        //Funzione logout
-        if(isset($request["logout"]))
-        {
-            $this->logout($vd);
-        }
-        
+ 
         //Questa funzione serve per eliminare il prodotto dal database    
         if(isset($request["elimina_prod_database"]))
         { 
