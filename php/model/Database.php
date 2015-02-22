@@ -9,7 +9,7 @@
         public static function connettiDatabase()
         {
             $mysqli = new mysqli();
-            $mysqli->connect("localhost", "root", "davide", "amm");
+            $mysqli->connect("localhost", "crobuWalter", "gabbiano20", "amm14_crobuWalter");
             return $mysqli;
         }
     }
