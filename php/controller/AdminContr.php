@@ -21,7 +21,7 @@ class AdminContr extends BaseContr
         $vd = new ViewDescriptor();
         $vd->setPagina(isset($request['page']));
         $this->setImpToken($vd, $request);
-        echo 'ciao<br>';
+
         //Funzione logout
         if(isset($request["logout"]))
         {

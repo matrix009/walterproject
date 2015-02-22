@@ -29,14 +29,13 @@
             }
             
             //Gestisce il logout da parte degli utent loggati
-            if (isset($request["logout"])) 
+            if(isset($request["logout"]))
             {
-                $controller = new UserContr();
-                if (isset($_SESSION[BaseContr::role]) &&$_SESSION[BaseContr::role] != User::User) 
+                if($request["logout"] === 'Logout') 
                 {
-                    self::write403();
+                    $cont = new BaseContr();
+                    $cont->listenInput($request);
                 }
-                $controller->listenInput($request);  
             }
             else
             {   

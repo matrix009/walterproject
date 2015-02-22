@@ -31,7 +31,8 @@ class BaseContr
                     $username = isset($request['user']) ? $request['user'] : '';
                     $password = isset($request['password']) ? $request['password'] : '';
                     $this->login($vd, $username, $password);
-                    
+
+                    $user = GuestDatabase::instance()->cercaUtentePerId($_SESSION[self::user], $_SESSION[self::role]);
                     break;
                 //Se il login è sbagliato, mostro la pagina di login    
                 default : $this->showLoginPage();
