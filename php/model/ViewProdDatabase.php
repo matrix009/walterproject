@@ -123,7 +123,7 @@ class ViewProdDatabase
             return null;
         }
         
-        //row contiene una tupla, prodotti contiene tutte le tuple
+        //Row contiene una tupla, prodotti contiene tutte le tuple
         while ($precomp->fetch()) 
         {
             $prodotti[] = self::creaProdottoDaArray($row);
@@ -212,7 +212,7 @@ class ViewProdDatabase
         $precomp->execute();
         $precomp->close();  
     }
-    //Funzione che permette di modificare l'intero prodotto del database
+    //Funzione che permette di aggiungere un intero prodotto del database
     public function aggiungiProdottoAlDatabase($tipo, $marca, $nome, $descrizione, $quantita, $prezzo)
     {
         $mysqli = Database::connettiDatabase();
@@ -245,7 +245,7 @@ class ViewProdDatabase
         $precomp->execute();
         $precomp->close();  
     }
-    
+    //Funzionw che fa terminare l'acquisto con la cancellazione dei prodotti dal carrello
     public function transazioneCarrello($id_utente)
     {
         $mysqli = Database::connettiDatabase();
@@ -260,7 +260,7 @@ class ViewProdDatabase
         mysql_query("START TRANSACTION");
         
         $query = "DELETE FROM carrello WHERE carrello.id_utente = ?";
-        
+
         $precomp = $mysqli->stmt_init();
         $precomp->prepare($query);
         if (!$precomp) 
@@ -279,9 +279,9 @@ class ViewProdDatabase
         }
 
         $precomp->execute();
-
-	mysql_query("COMMIT");
-	
+        
+        mysql_query("COMMIT");
+        
         $precomp->close();  
     }
 }

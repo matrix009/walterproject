@@ -1,4 +1,5 @@
 <?php
+//Includo i file necessari
 include_once basename(__DIR__) . '/../view/ViewDescriptor.php'; 
 include_once basename(__DIR__) . '/../model/GuestDatabase.php';
 include_once basename(__DIR__) . '/../model/ViewProdDatabase.php';
@@ -15,13 +16,13 @@ class BaseContr
     {
         
     }
-    
+    //Il controller gestisce il login
     public function listenInput(&$request) 
     {
         $vd = new ViewDescriptor();
         $vd->setPagina(isset($request['page']));
         $this->setImpToken($vd, $request);
-
+        //Gestione login in base all'utente
         if (isset($request["cmd"])) 
         {
             switch ($request["cmd"]) 
@@ -30,40 +31,28 @@ class BaseContr
                     $username = isset($request['user']) ? $request['user'] : '';
                     $password = isset($request['password']) ? $request['password'] : '';
                     $this->login($vd, $username, $password);
-                    if ($this->loggedIn())
-                        $user = GuestDatabase::instance()->cercaUtentePerId($_SESSION[self::user], $_SESSION[self::role]);
-                    break;
                     
+                    break;
+                //Se il login è sbagliato, mostro la pagina di login    
                 default : $this->showLoginPage();
             }
         } 
         else 
-        {
-            if ($this->loggedIn()) 
+        {       //Gestione sottopagina da parte di un utente non loggato
+            if(isset($request["sottopagina"]))
             {
-                
-            } 
-            else 
-            {
-                if(isset($request["sottopagina"]))
+                switch($request["sottopagina"])
                 {
-                    switch($request["sottopagina"])
-                    {
-                        case 'informazioni':
-                            $vd->setSottoPagina('informazioni');
-                            break;
-                    }
+                    case 'informazioni':
+                    $vd->setSottoPagina('informazioni');
+                    
+                        break;
                 }
-                $this->showLoginPage($vd);
             }
-        }
+            $this->showLoginPage($vd);
+         }
     }
-    
-    protected function loggedIn()
-    {
-        return isset($_SESSION) && array_key_exists(self::user, $_SESSION);
-    }
-
+    //Carico tramite la vista la pagina di login
     protected function showLoginPage($vd)
     {
         $vd->setTitolo("Tutto Informatica - Login");
@@ -75,7 +64,7 @@ class BaseContr
         
         require basename(__DIR__) . '/../view/Page.php';
     }
-    
+    //Carico tramite la vista la pagina dell'utente
     protected function showHomeUser($vd) 
     {
         $vd->setTitolo("Tutto Informatica - Benvenuto Utente");
@@ -87,7 +76,7 @@ class BaseContr
 
         require basename(__DIR__) . '/../view/Page.php';
     }
-    
+    //Carico tramite la vista la pagina dell'admin
     protected function showHomeAdmin($vd) 
     {
         $vd->setTitolo("Tutto Informatica - Benvenuto Admin");
@@ -99,16 +88,16 @@ class BaseContr
         
         require basename(__DIR__) . '/../view/Page.php';
     }
-
+    //Visualizzo la pagina associata al tipo di utente loggato
     protected function showHomeUtente($vd) 
     {
         $user = GuestDatabase::instance()->cercaUtentePerId($_SESSION[self::user], $_SESSION[self::role]);
         switch ($user->getRuolo()) 
-        {
+        {   //Caso utente normale
             case User::User:
                 $this->showHomeUser($vd);
                 break;
-            
+            //Caso admin
             case User::Admin:
                 $this->showHomeAdmin($vd);
                 break;
@@ -122,7 +111,7 @@ class BaseContr
             $vd->setImpToken($request['_imp']);
         }
     }
-
+    //Questa funzione controlla se nel database sono presenti i valori inseriti nel login
     protected function login($vd, $username, $password) 
     {
         $this->user = GuestDatabase::instance()->caricaUtente($username, $password);
@@ -137,7 +126,7 @@ class BaseContr
             $this->showLoginPage($vd);
         }
     }
-
+    //Funzione di logout che distrugge la sessione e mostra la pagina di login
     protected function logout($vd)
     {
         $_SESSION = array();

@@ -1,5 +1,5 @@
 <br><br><br><br><br>
-<center><font size="6"><b>√ Acquisto effettuato son successo</b></font></center>
+<center><font size="6"><b>√ Acquisto effettuato con successo</b></font></center>
 <br>
 <center>
     <form action="index.php">
